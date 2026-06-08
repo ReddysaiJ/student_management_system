@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management System</title>
-     <link rel="stylesheet" type="text/css" href="styles/style1.css" />
-  </head>
+    <link rel="stylesheet" type="text/css" href="styles/style1.css" />
 </head>
 <body>
     <div>
@@ -18,7 +17,7 @@
     </div>
     <div style="text-align: center" class="formDiv">
         <h2>Add a Student</h2>
-        <form action="./viewStudents.html">
+        <form onsubmit="add(event)">
             <label for="rollNumber">Roll Number :</label>
             <input type="text" id="rollNumber" placeholder="roll number" required>
             <label for="name">Name :</label>
@@ -30,5 +29,7 @@
             <button type="submit">Add Student</button>
         </form>
     </div>
+    <script src="addStudent.js"></script>
 </body>
 </html>
+

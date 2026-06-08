@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management System</title>
-     <link rel="stylesheet" type="text/css" href="styles/style1.css" />
-  </head>
+    <link rel="stylesheet" type="text/css" href="styles/style1.css" />
 </head>
 <body>
     <div>
@@ -17,7 +16,8 @@
     </div>
     <div style="text-align: center" class="formDiv">
         <h3>Register TO Student Management System</h3>
-        <form action="./login.html">
+        <form onsubmit="register(event)">
+            <p id="error" style="color: orange;"></p>
             <label for="rollNumber">Roll Number :</label>
             <input type="text" id="rollNumber" placeholder="roll number" required>
             <label for="email">Email:</label>
@@ -26,11 +26,13 @@
             <label for="password">Password:</label>
             <input type="password" id="password" required placeholder="password">
 
-            <label for="conformPassword">Re-Type Password:</label>
-            <input type="password" id="conformPassword" required placeholder="password">
+            <label for="confirmPassword">Re-Type Password:</label>
+            <input type="password" id="confirmPassword" required placeholder="password">
             <button type="submit">Register</button>
             <p>go to <a href="login.html">Login</a></p>
         </form>
     </div>
+    
+    <script src="register.js"></script>
 </body>
 </html>
