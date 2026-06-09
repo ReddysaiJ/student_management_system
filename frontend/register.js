@@ -7,16 +7,19 @@ let error = document.getElementById("error");
 function register(event){
     event.preventDefault();
     error.innerHTML = "";
-    
-    if (rno.value.length !== 10) {
+    if(!rno.value.match(/^[0-9A-Z]{10}$/i)){
         error.innerHTML = "Roll Number should be of length 10.";
         return;
     }
-    if(pass.value.length < 6){
-        error.innerHTML = "Password must be atleast of length 6.";
+    if(!mail.value.match(/^[A-Z0-9.!@#$%^&*]+@gmail.com$/i)){
+        error.innerHTML = "Enter a valid gmail address";
         return;
     }
-    if (pass.value !== re_pass.value) {
+    if(!pass.value.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}/)){
+        error.innerHTML = "Password must be atleast 8 characters and contain atleast one <br>uppercase <br>lowercase<br>digit<br>special character";
+        return;
+    }
+    if(pass.value !== re_pass.value){
         error.innerHTML = "Passwords do not match.";
         return;
     }

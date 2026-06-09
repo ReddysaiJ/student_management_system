@@ -6,12 +6,12 @@ function login(event){
     event.preventDefault();
     error.innerHTML = "";
     
-    if (rno.value.length !== 10) {
+    if(!rno.value.match(/^[0-9A-Z]{10}$/i)){
         error.innerHTML = "Roll Number should be of length 10.";
         return;
     }
-    if(pass.value.length < 6){
-        error.innerHTML = "Password must be atleast of length 6.";
+    if(!pass.value.match(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}/)){
+        error.innerHTML = "Wrong password"
         return;
     }
     
@@ -26,5 +26,4 @@ function login(event){
     }
     alert("Login Successful");
     window.location.href = 'dashboard.html';
-    
 }

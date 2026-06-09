@@ -19,15 +19,8 @@ for(let i = 0; i < students.length; i++){
     `
 }
 
-function remove(idx){
-    let newData = [];
-    for(let i = 0; i < students.length; i++){
-        if(i == idx)
-            continue;
-        newData.push(students[i]);
-    }
-    console.log(typeof newData);
-
-    localStorage.setItem("details", newData);
-    // window.location.href = "viewStudents.html";
+function remove(idx) {
+    students.splice(idx, 1);
+    localStorage.setItem("details", JSON.stringify(students));
+    window.location.reload();
 }
