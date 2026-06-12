@@ -2,7 +2,7 @@ let rno = document.getElementById("rollNumber");
 let pass = document.getElementById("password");
 let error = document.getElementById("error");
 
-function login(event){
+async function login(event){
     event.preventDefault();
     error.innerHTML = "";
     
@@ -15,7 +15,16 @@ function login(event){
         return;
     }
     
-    const student = JSON.parse(localStorage.getItem(`${rno.value}`));
+    // const student = JSON.parse(localStorage.getItem(`${rno.value}`));
+    try{
+        var students = await fetch("http://localhost:3000/users")
+                        .then(response => response.json());
+    } catch(error){
+        console.error(error);
+        return;
+    }
+
+    let student = students.find(s => s.rollNumber == rno.value);
     if(student == null){
         error.innerHTML = "student with this roll no does not exist.";
         return;

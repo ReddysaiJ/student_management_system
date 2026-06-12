@@ -4,15 +4,15 @@ let branch = document.getElementById("branch");
 let cgpa = document.getElementById("cgpa");
 let error = document.getElementsByTagName("p")[0];
 
-function add(event){
+async function add(event){
     event.preventDefault();
-    let details = JSON.parse(localStorage.getItem("details")) || [];
-    
+    // let details = JSON.parse(localStorage.getItem("details")) || [];
+
     if(!rno.value.match(/^[0-9A-Z]{10}$/i)){
         error.innerHTML = "Roll Number should be of length 10.";
         return;
     }
-    if(!name.value.match(/^[A-Z]+$/i)){
+    if(!name.value.match(/^[a-zA-Z]+([a-zA-Z\s]*[a-zA-Z]+)?$/)){
         error.innerHTML = "Name should contain only alphabets.";
         return;
     }
@@ -24,13 +24,22 @@ function add(event){
         error.innerHTML = "Invalid CGPA."
         return;
     }
+
     let student = {
         rollNumber: rno.value,
         name: name.value,
         branch: branch.value,
         cgpa: cgpa.value
     }
-    details.push(student);
-    localStorage.setItem("details", JSON.stringify(details));
+
+    try{
+        await fetch("http://localhost:3000/students", {
+            method: "POST",
+            body: JSON.stringify(student)
+        })
+    } catch(error){
+        console.error(error);
+        return
+    }
     window.location.href = './viewStudents.html';
 }

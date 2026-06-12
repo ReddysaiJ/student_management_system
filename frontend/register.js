@@ -4,7 +4,7 @@ let mail = document.getElementById("email");
 let re_pass = document.getElementById("confirmPassword");
 let error = document.getElementById("error");
 
-function register(event){
+async function register(event){
     event.preventDefault();
     error.innerHTML = "";
     if(!rno.value.match(/^[0-9A-Z]{10}$/i)){
@@ -30,6 +30,14 @@ function register(event){
         password: pass.value
     };
 
-    localStorage.setItem(`${student.rollNumber}`, JSON.stringify(student));
+    // localStorage.setItem(`${student.rollNumber}`, JSON.stringify(student));
+    try{
+        await fetch("http://localhost:3000/users", {
+            method:'POST',
+            body: JSON.stringify(student)
+        });
+    } catch(error){
+        console.error("Error:", error);
+    }
     window.location.href = "login.html"
 }

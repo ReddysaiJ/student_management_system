@@ -1,0 +1,27 @@
+{
+  "users": [
+    {
+      "rollNumber": "23B81A05V6",
+      "email": "reddysai2107@gmail.com",
+      "password": "123456a@A",
+      "id": "rpbvealbW6k"
+    }
+  ],
+  "students": [
+    {
+      "rollNumber": "23B81A05V6",
+      "name": "Reddysai Jonnadula",
+      "branch": "CSE",
+      "cgpa": "9",
+      "id": "XnmT20TqCxI"
+    },
+    {
+      "rollNumber": "23B81A05R7",
+      "name": "Abhinay",
+      "branch": "CSE",
+      "cgpa": "9.8",
+      "id": "mHJWblaeDeQ"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
